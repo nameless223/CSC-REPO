@@ -1,13 +1,16 @@
 #pragma once
 #include <iostream>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
 class complex			//THE MOST READABLE CODE
 {
 public:
-	float a, b, c, d, cho;
+	float a, b, c, d;
+	int cho;
+	//int input;
 	char choice;
 	void prompt()
 	{
@@ -18,25 +21,43 @@ public:
 
 		start:
 			cout << "Enter the number of the operation you would like to perform: \n1.)Addition...\n2.)Subtraction\n3.)Mutliplication\n4.)Division" << endl;
-
 			cin >> cho;
+			
+			
 			if (cho == 1)
 			{
 				add(a, b, c, d);
 				run();
-
 			}
-			else if (cho == 2)
+			else
+			{
+				cout << "Invalid Input" << endl;
+				goto start;
+			}
+	
+			if (cho == 2)
 			{
 				sub(a, b, c, d);
 				run();
 			}
-			else if (cho == 3)
+			else 
+			{
+				cout << "Invalid Input" << endl;
+				goto start;
+			}
+
+			if (cho == 3)
 			{
 				mult(a, b, c, d);
 				run();
 			}
-			else if (cho == 4)
+			else
+			{
+				cout << "Invalid Input" << endl;
+				goto start;
+			}
+
+			if (cho == 4)
 			{
 				div(a, b, c, d);
 				run();
@@ -49,6 +70,15 @@ public:
 		} while (toupper(choice) == 'Y');
 
 
+	}
+	void pstart()
+	{
+	start:
+		cout << "Enter your first and second real number: " << endl;
+		cin >> a >> b;
+
+		cout << "Enter your first and second imaginary number: " << endl;
+		cin >> c >> d;
 	}
 	void add(float a, float b, float c, float d)
 	{
@@ -81,13 +111,5 @@ public:
 		cout << "Would you like to run again? Y or N";
 		cin >> choice;
 	}
-	void pstart()
-	{
-	start:
-		cout << "Enter your first and second real number: " << endl;
-		cin >> a >> b;
-
-		cout << "Enter your first and second imaginary number: " << endl;
-		cin >> c >> d;
-	}
+	
 };
