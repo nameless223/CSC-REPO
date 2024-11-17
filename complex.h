@@ -4,11 +4,34 @@
 
 using namespace std;
 
+namespace UnnecessaryNamespace
+{
+	void Bye()
+	{
+		cout << "Thank you";
+	}
+}
+
 class complex			//THE MOST READABLE CODE
 {
 public:
-	float a, b, c, d, cho;
+	//int* a, b, c, d, cho;
+	int a;
+	int* a1 = &a;
+	int b;
+	int* b1 = &b;
+	int c;
+	int* c1 = &c;
+	int d;
+	int* d1 = &d;
+	int cho;
+	int* cho1 = &cho;
+
 	char choice;
+
+
+
+	
 	void prompt()
 	{
 
@@ -19,26 +42,26 @@ public:
 		start:
 			cout << "Enter the number of the operation you would like to perform: \n1.)Addition...\n2.)Subtraction\n3.)Mutliplication\n4.)Division" << endl;
 
-			cin >> cho;
-			if (cho == 1)
+			cin >> *cho1;
+			if (*cho1 == 1)
 			{
-				add(a, b, c, d);
+				add(a1, b1, c1, d1);
 				run();
 
 			}
-			else if (cho == 2)
+			else if (*cho1 == 2)
 			{
-				sub(a, b, c, d);
+				sub(a1, b1, c1, d1);
 				run();
 			}
-			else if (cho == 3)
+			else if (*cho1 == 3)
 			{
-				mult(a, b, c, d);
+				mult(a1, b1, c1, d1);
 				run();
 			}
-			else if (cho == 4)
+			else if (*cho1 == 4)
 			{
-				div(a, b, c, d);
+				div(a1, b1, c1, d1);
 				run();
 			}
 			else
@@ -50,30 +73,30 @@ public:
 
 
 	}
-	void add(float a, float b, float c, float d)
+	void add(int* a1, int* b1, int* c1, int* d1)
 	{
-		float sumr = (a + b);
-		float sumi = (c + d);
+		int sumr = (*a1 + *b1);
+		int sumi = (*c1 + *d1);
 		cout << sumr << " + " << sumi << "i " << endl;
 
 	}
-	void sub(float a, float b, float c, float d)
+	void sub(int* a1, int* b1, int* c1, int* d1)
 	{
-		float diffr = (a - b);
-		float diffi = (c - d);
+		int diffr = (*a1 - *b1);
+		int diffi = (*c1 - *d1);
 		cout << diffr << " - " << diffi << "i " << endl;
 	}
-	void mult(float a, float b, float c, float d)
+	void mult(int* a1, int* b1, int* c1, int* d1)
 	{
-		float prodr = (a * b - c * d);
-		float prodi = (a * d - b * c);
+		int prodr = (*a1 * *b1 - *c1 * *d1);
+		int prodi = (*a1 * *d1 - *b1 * *c1);
 		cout << prodr << " * " << prodi << "i " << endl;
 	}
-	void div(float a, float b, float c, float d)
+	void div(int* a1, int* b1, int* c1, int* d1)
 	{
-		float denom = pow(b, 2) + pow(d, 2);
-		float quotr = (a * b + c * d) / (denom);
-		float quoti = (a * -d + c * b) / (denom);
+		int denom = pow(*b1, 2) + pow(*d1, 2);
+		int quotr = (*a1 * *b1 + *c1 * *d1) / (denom);
+		int quoti = (*a1 * -*d1 + *c1 * *b1) / (denom);
 		cout << quotr << " / " << quoti << "i " << endl;
 	}
 	void run()
@@ -85,9 +108,9 @@ public:
 	{
 	start:
 		cout << "Enter your first and second real number: " << endl;
-		cin >> a >> b;
+		cin >> *a1 >> *b1;
 
 		cout << "Enter your first and second imaginary number: " << endl;
-		cin >> c >> d;
+		cin >> *c1 >> *d1;
 	}
 };
