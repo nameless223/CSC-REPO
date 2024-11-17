@@ -8,7 +8,7 @@ using namespace UnnecessaryNamespace;
 int main()
 {
 	complex f1;
-
+	
 	f1.prompt();
 	UnnecessaryNamespace::Bye();
 
